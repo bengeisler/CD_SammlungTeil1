@@ -7,6 +7,7 @@ namespace CD_SammlungTeil1
 	public partial class Form1 : Form
 	{
 		private List<CD> meineSammlung = new List<CD>();
+		
 		public Form1()
 		{
 			InitializeComponent();
@@ -65,6 +66,31 @@ namespace CD_SammlungTeil1
 			foreach (var cd in meineSammlung)
 			{
 				Console.WriteLine(cd);
+			}
+		}
+
+		private void btnNeueCD_Click(object sender, EventArgs e)
+		{
+			var neueForm = new NeueCD();  // Objekt von der neuen Form wird erstellt
+
+			// 2. Form anzeigen und Rückgabe auswerten
+			var rückgabeAusNeueCD = neueForm.ShowDialog();
+
+			if (rückgabeAusNeueCD == DialogResult.OK)
+			{
+				// Der CD-Liste wird ein neues OBjekt hinzugefügt
+				// Die Eigenschaften des neuen Objekts werden im Konstruktor angegeben
+				// Die Daten dafür kommen aus den Eigenschaften des neuen Formulars (NeueCD)
+				// Wichtig: Es muss auf das konkrete Objekt von diesem neuen Formular zugegriffen werden:
+				// => neueForm
+				try
+				{
+					meineSammlung.Add(new CD(neueForm.Album, neueForm.Künstler));
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show(ex.Message);
+				}
 			}
 		}
 	}

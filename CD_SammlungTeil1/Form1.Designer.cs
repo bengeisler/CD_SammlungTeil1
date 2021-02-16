@@ -44,6 +44,7 @@ namespace CD_SammlungTeil1
 			this.btnNeueCD.TabIndex = 9;
 			this.btnNeueCD.Text = "Neue CD eingeben";
 			this.btnNeueCD.UseVisualStyleBackColor = true;
+			this.btnNeueCD.Click += new System.EventHandler(this.btnNeueCD_Click);
 			// 
 			// btnSortiertAusgeben
 			// 

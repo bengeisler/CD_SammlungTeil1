@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace CD_SammlungTeil1
 {
-	class CD : IEquatable<CD>, IComparable<CD>
+	public class CD : IEquatable<CD>, IComparable<CD>
 	{
 		// Eigenschaften 
 		private readonly string titel;
