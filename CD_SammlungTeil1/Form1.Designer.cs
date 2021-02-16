@@ -53,6 +53,7 @@ namespace CD_SammlungTeil1
 			this.btnSortiertAusgeben.TabIndex = 8;
 			this.btnSortiertAusgeben.Text = "Alphabetisch sortiert ausgeben";
 			this.btnSortiertAusgeben.UseVisualStyleBackColor = true;
+			this.btnSortiertAusgeben.Click += new System.EventHandler(this.btnSortiertAusgeben_Click);
 			// 
 			// btnCdsAnzeigen
 			// 

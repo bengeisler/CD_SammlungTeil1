@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CD_SammlungTeil1
 {
-	class CD : IEquatable<CD>
+	class CD : IEquatable<CD>, IComparable<CD>
 	{
 		// Eigenschaften 
 		private readonly string titel;
@@ -15,8 +12,17 @@ namespace CD_SammlungTeil1
 		// Konstruktor
 		public CD(string t, string k)
 		{
+			// Ausnahme wird in der Klasse ausgelöst, aber nicht aufgefangen
+			// => Ausnahme wird automatisch in nächsthöhere Ebene weiter"geworfen"
+			if (t == "" || k == "") throw new ArgumentException("Bitte Titel und Künstler eingeben");
+
 			titel = t;
 			künstler = k;
+		}
+
+		public int CompareTo(CD other)
+		{
+			return titel.CompareTo(other.titel);
 		}
 
 		public override bool Equals(object obj)

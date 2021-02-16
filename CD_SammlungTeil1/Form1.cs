@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CD_SammlungTeil1
@@ -26,12 +20,19 @@ namespace CD_SammlungTeil1
 
 		private void btnHinzufügen_Click(object sender, EventArgs e)
 		{
-			// Objekte erstellen und der Liste hinzufügen
-			meineSammlung.Add(new CD("A Night At The Opera", "Queen"));
-			meineSammlung.Add(new CD("A Day At The Races", "Queen"));
-			meineSammlung.Add(new CD("Smash", "The Offspring"));
-			meineSammlung.Add(new CD("Best Of", "Earth, Wind And Fire"));
-			meineSammlung.Add(new CD("21", "Adele"));
+			try
+			{
+				// Objekte erstellen und der Liste hinzufügen
+				meineSammlung.Add(new CD("A Night At The Opera", "Queen"));
+				meineSammlung.Add(new CD("A Day At The Races", "Queen"));
+				meineSammlung.Add(new CD("Smash", "The Offspring"));
+				meineSammlung.Add(new CD("Best Of", "Earth, Wind And Fire"));
+				meineSammlung.Add(new CD("21", "Adele"));
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message);
+			}
 
 			MessageBox.Show("Die Sammlung enthält: " + meineSammlung.Count + " CDs");
 		}
@@ -52,6 +53,19 @@ namespace CD_SammlungTeil1
 			
 			//if (meineSammlung.Contains(new CD("Best Of", "Earth, Wind And Fire"))) 
 			//	MessageBox.Show("CD ist enthalten");
+		}
+
+		private void btnSortiertAusgeben_Click(object sender, EventArgs e)
+		{
+			// Sort() => Liste sortieren
+			meineSammlung.Sort();   // Aufsteigende Sortierung
+			meineSammlung.Reverse(); // Absteigende Sortierung (vorher muss Sort() ausgeführt werden)
+
+			// Alle Elemente der Liste in der Konsole ausgeben
+			foreach (var cd in meineSammlung)
+			{
+				Console.WriteLine(cd);
+			}
 		}
 	}
 }
